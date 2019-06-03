@@ -30,19 +30,9 @@ if (!"memory" %in% names(resources)) {
 #SBATCH --error=<%= log.file %>
 #SBATCH --ntasks=1
 
-<%= if (!is.null(resources$walltime)) { %>
-#SBATCH --time=<%= ceiling(resources$walltime / 60) %>
-<%= } %>
-
-<%= if (!is.null(resources$ncpus)) { %>
-#SBATCH --cpus-per-task=<%= resources$ncpus %>
-<%= } %>
-
-<%= if (!is.null(resources$memory)) { %>
-#SBATCH --mem-per-cpu=<%= resources$memory %>
-<%= } %>
-
-<%= if (array.jobs) sprintf("#SBATCH --array=1-%i", nrow(jobs)) else "" %>
+#SBATCH --time=<%= 60 %>
+#SBATCH --cpus-per-task=<%= 1 %>
+#SBATCH --mem-per-cpu=<%= 2GB %>
 
 ## Initialize work environment like
 ## source /etc/profile
