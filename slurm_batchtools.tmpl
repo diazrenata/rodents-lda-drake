@@ -25,7 +25,7 @@ if (!"memory" %in% names(resources)) {
   #SBATCH --qos=ewhite-b   # Remove the `-b` if the script will take more than 4 days; see "bursting" below
 
 
-#SBATCH --job-name=<%= rodents %>
+#SBATCH --job-name=<%= "rodents" %>
 #SBATCH --output=<%= log.file %>
 #SBATCH --error=<%= log.file %>
 #SBATCH --ntasks=1
