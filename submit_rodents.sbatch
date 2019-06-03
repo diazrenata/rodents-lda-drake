@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #SBATCH --job-name=rodents_master   # Job name
 #SBATCH --mail-type=ALL               # Mail events (NONE, BEGIN, END, FAIL, AL$
