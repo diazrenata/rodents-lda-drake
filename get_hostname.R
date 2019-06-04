@@ -2,4 +2,12 @@ hostname <- Sys.getenv("HOSTNAME")
 
 print(hostname)
 
-print(Sys.info())
+info <- Sys.info()
+
+nodename <- info["nodename"]
+
+print(nodename)
+
+if(grepl("ufhpc", nodename)) {
+  print("I know I am on SLURM!")
+}
