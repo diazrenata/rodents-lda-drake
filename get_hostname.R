@@ -2,9 +2,7 @@ hostname <- Sys.getenv("HOSTNAME")
 
 print(hostname)
 
-info <- Sys.info()
-
-nodename <- info["nodename"]
+nodename <- Sys.info()["nodename"]
 
 print(nodename)
 
