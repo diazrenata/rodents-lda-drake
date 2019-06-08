@@ -18,15 +18,15 @@ pipeline <- drake_plan(
                                   document_covariate_table = portal_data$covariates,
                                   formulas = ~ newmoonnumber,
                                   nchangepoints = c(0:6), 
-                                  weights = document_weights(rodents$document_term_table),
-                                  control = TS_controls_list(nit = 100, timename = "newmoon")), 
+                                  weights = document_weights(portal_data$abundance),
+                                  control = TS_controls_list(nit = 100, timename = "newmoonnumber")), 
   
-  portal_cpt_selected = select_TS(portal_changepoint_models),
-  
-  print(portal_cpt_selected$nchangepoints)
+  portal_cpt_selected = select_TS(portal_changepoint_models)
   
   )
   
+print(portal_cpt_selected$nchangepoints)
+
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
 # 
