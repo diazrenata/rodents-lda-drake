@@ -39,4 +39,5 @@ slurm-example/
 
 drake/
 
+.drake_history/
 
