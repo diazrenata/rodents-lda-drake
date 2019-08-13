@@ -35,3 +35,8 @@ rsconnect/
 # slurm example from drake
 slurm-example/
 
+.drake/
+
+drake/
+
+
