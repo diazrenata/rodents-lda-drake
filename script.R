@@ -30,6 +30,16 @@ pipeline <- drake_plan(
 
 db <- DBI::dbConnect(RSQLite::SQLite(), here::here("drake", "drake-cache.sqlite"))
 cache <- storr::storr_dbi("datatable", "keystable", db)
+
+
+## View the graph of the plan
+if (interactive())
+{
+  config <- drake_config(pipeline, cache = cache)
+  sankey_drake_graph(config, build_times = "none")  # requires "networkD3" package
+  vis_drake_graph(config, build_times = "none")     # requires "visNetwork" package
+}
+
 # 
 # library(future.batchtools)
 # ## Run the pipeline parallelized for HiPerGator
