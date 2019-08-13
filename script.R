@@ -10,7 +10,7 @@ pipeline <- drake_plan(
   portal_lda = LDATS::LDA_set(document_term_table = portal_data$abundance,
                               topics = c(2:6),
                               nseeds = 10,
-                              control = LDA_controls_list(quiet = TRUE)),
+                              control = list(quiet = TRUE)),
   
   
   
@@ -19,9 +19,9 @@ pipeline <- drake_plan(
   portal_changepoint_models = TS_on_LDA(LDA_models = portal_lda_selected, 
                                         document_covariate_table = portal_data$covariates,
                                         formulas = ~ newmoonnumber,
-                                        nchangepoints = c(0:6), 
+                                        nchangepoints = c(0:2), 
                                         weights = document_weights(portal_data$abundance),
-                                        control = TS_controls_list(nit = 100, timename = "newmoonnumber")), 
+                                        control = list(nit = 100, timename = "newmoonnumber")), 
   
   portal_cpt_selected = select_TS(portal_changepoint_models)
   
