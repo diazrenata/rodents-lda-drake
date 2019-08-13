@@ -21,7 +21,7 @@ pipeline <- drake_plan(
                                         formulas = ~ newmoonnumber,
                                         nchangepoints = c(0:2), 
                                         weights = document_weights(portal_data$abundance),
-                                        control = list(nit = 100, timename = "newmoonnumber")), 
+                                        control = list(nit = 100)), 
   
   portal_cpt_selected = select_TS(portal_changepoint_models)
   
